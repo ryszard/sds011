@@ -34,6 +34,9 @@ file or pipe it into a script that will export it somewhere (which is
 what I am doing, because with the WiFi dongle and sensor connected I
 don't have room for a pendrive, so space is scarce).
 
+If you want to do something more fancy, just import
+`github.com/ryszard/sds011/go/sds011` in your code.
+
 # License
 
 [Apache 2.0](https://www.tldrlegal.com/l/apache2), please see the file
