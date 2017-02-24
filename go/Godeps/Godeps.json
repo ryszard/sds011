@@ -1,0 +1,14 @@
+{
+	"ImportPath": "github.com/ryszard/sds011/go",
+	"GoVersion": "go1.8",
+	"GodepVersion": "v79",
+	"Packages": [
+		"./..."
+	],
+	"Deps": [
+		{
+			"ImportPath": "github.com/jacobsa/go-serial/serial",
+			"Rev": "6f298b3ae27eacbbad51a827dcce21d792fb45e1"
+		}
+	]
+}
