@@ -18,18 +18,16 @@ The output will look something like this:
 
 ```
 pi@raspberrypi ~ $ ./sds011
-2017-02-24T11:01:51Z	3.4	3.8
-2017-02-24T11:01:54Z	3.4	3.8
-2017-02-24T11:01:55Z	3.4	3.8
-2017-02-24T11:01:56Z	3.4	3.8
-2017-02-24T11:01:57Z	3.4	3.8
-2017-02-24T11:01:58Z	3.4	3.9
-2017-02-24T11:01:59Z	3.5	4
-2017-02-24T11:02:00Z	3.6	4.1
-2017-02-24T11:02:01Z	3.6	4.2
+2017-02-24T11:38:44Z,3.2,3.5
+2017-02-24T11:38:46Z,3.2,3.5
+2017-02-24T11:38:49Z,3.1,3.4
+2017-02-24T11:38:50Z,3.1,3.4
+2017-02-24T11:38:53Z,3.2,3.5
+2017-02-24T11:38:54Z,3.2,3.6
+2017-02-24T11:38:56Z,3.2,3.6
 ```
 
-This is TSV contianing first the timestamp (in RFC3339 format), then
+This is CSV containing first the timestamp (in RFC3339 format), then
 the PM2.5 levels, then the PM10 levels. You can either send it to a
 file or pipe it into a script that will export it somewhere (which is
 what I am doing, because with the WiFi dongle and sensor connected I
