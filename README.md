@@ -14,9 +14,10 @@ $ GOOS=linux GOARCH=arm go build  ./go/cmd/sds011 && scp  sds011 pi@pi:
 
 Depending on the version of your Pi, you may need to add `GOARM=6`.
 
-The binary will output something like this:
+The output will look something like this:
 
 ```
+pi@raspberrypi ~ $ ./sds011
 2017-02-24T11:01:51Z	3.4	3.8
 2017-02-24T11:01:54Z	3.4	3.8
 2017-02-24T11:01:55Z	3.4	3.8
