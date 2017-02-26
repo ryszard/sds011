@@ -24,11 +24,12 @@ import (
 	"os"
 	"time"
 
-	"github.com/jacobsa/go-serial/serial"
 	"github.com/ryszard/sds011/go/sds011"
 )
 
-var portPath = flag.String("port_path", "/dev/ttyUSB0", "serial port path")
+var (
+	portPath = flag.String("port_path", "/dev/ttyUSB0", "serial port path")
+)
 
 func init() {
 	flag.Usage = func() {
@@ -40,24 +41,15 @@ The columns are: an RFC3339 timestamp, the PM2.5 level, the PM10 level.`)
 		flag.PrintDefaults()
 	}
 }
+
 func main() {
 	flag.Parse()
 
-	options := serial.OpenOptions{
-		PortName:        *portPath,
-		BaudRate:        9600,
-		DataBits:        8,
-		StopBits:        1,
-		MinimumReadSize: 4,
-	}
-
-	port, err := serial.Open(options)
+	sensor, err := sds011.New(*portPath)
 	if err != nil {
-		log.Fatalf("serial.Open: %v", err)
+		log.Fatal(err)
 	}
-
-	defer port.Close()
-	sensor := sds011.New(port)
+	defer sensor.Close()
 
 	for {
 		point, err := sensor.Get()
