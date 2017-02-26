@@ -1,0 +1,1 @@
+Note: [Protocol_V1.3.docx](./Protocol_V1.3.docx) is owned by Nova Fitness Co., Ltd, I am including it for reference only.
