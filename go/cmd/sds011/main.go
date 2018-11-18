@@ -29,6 +29,7 @@ import (
 
 var (
 	portPath = flag.String("port_path", "/dev/ttyUSB0", "serial port path")
+	unix = flag.Bool("unix", false, "print timestamps as number of seconds since 1970-01-01 00:00:00 UTC")
 )
 
 func init() {
@@ -43,6 +44,8 @@ The columns are: an RFC3339 timestamp, the PM2.5 level, the PM10 level.`)
 }
 
 func main() {
+	var ts string
+
 	flag.Parse()
 
 	sensor, err := sds011.New(*portPath)
@@ -57,6 +60,13 @@ func main() {
 			log.Printf("ERROR: sensor.Get: %v", err)
 			continue
 		}
-		fmt.Fprintf(os.Stdout, "%v,%v,%v\n", point.Timestamp.Format(time.RFC3339), point.PM25, point.PM10)
+
+		if *unix {
+			ts = fmt.Sprintf("%v", point.Timestamp.Unix())
+		} else {
+			ts = point.Timestamp.Format(time.RFC3339)
+		}
+
+		fmt.Fprintf(os.Stdout, "%v,%v,%v\n", ts, point.PM25, point.PM10)
 	}
 }
